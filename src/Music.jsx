@@ -1,18 +1,13 @@
-import { useMemo, useState, useRef } from 'react'
-import objet from './Objet';
+import ReactAudioPlayer from 'react-audio-player';
 
- class Music{
-    constructor(src){
-        this.audio = new Audio(src)
-    }
 
-    play(){
-        this.audio.play()
-    }
+export default function Music() {
 
-    stop(){
-        this.audio.pause()
-        this.audio.currentTime = 0
-    }
+return  <ReactAudioPlayer
+            src="./sounds/TULE_Together.ogg"
+            autoPlay
+            controls
+        /> 
 }
+
 
