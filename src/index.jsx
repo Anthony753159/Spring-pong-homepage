@@ -4,20 +4,31 @@ import Experience from './Experience'
 import './style.css'
 import { Perf } from 'r3f-perf'
 import { Environment } from '@react-three/drei'
+import { RotationOps } from '@dimforge/rapier3d-compat'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
-    <Canvas>
+    <Canvas
+    shadows
+    camera={ {
+        fov: 60,
+        near: 0.3,
+        far: 30,
+        position: [ -0.0, 0.3 , 10.0 ]
+       
+    } }
+   
+
+  >
  
-        <Perf/>
-        <Environment preset="city"></Environment>
+        {/* <Perf/> */}
         <Experience  shadows
         camera={ {
             fov: 45,
             near: 0.1,
             far: 2,
-            position: [ 2.5, 4, 6 ]
+            position: [ 8, 4, 10 ]
         } }/>
     </Canvas>
        

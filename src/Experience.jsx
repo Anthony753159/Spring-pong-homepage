@@ -1,26 +1,32 @@
 
 import * as THREE from 'three'
-import { ScreenQuad, Cloud, Float, OrbitControls, useMatcapTexture, Center, Text3D, Sky, Stage, useFBX, Environment } from '@react-three/drei'
+import { OrthographicCamera, ContactShadows, RandomizedLight, SpotLight, Stars, ScreenQuad, Cloud, Float, OrbitControls, useMatcapTexture, Center, Text3D, Sky, Stage, useFBX, Environment, SoftShadows, CubeCamera } from '@react-three/drei'
 import Objet from './Objet.jsx'
 import Lights from './Lights.jsx'
 import Video from './Video.jsx'
+import Effects from './Effects.jsx'
+import { Physics, Debug } from '@react-three/rapier'
+import Music from './Music.jsx'
+
+
+
+
 
 
 export default function Experience() {
-    const material = new THREE.MeshMatcapMaterial({ color: 'lightgreen' })
-
 
     return <>
 
-   
+        <Effects />
         <OrbitControls />
-        {/* <Float> */}
-        <Objet />
-        {/* <Cloud /> */}
-        {/* </Float> */}
-        <Lights />
-        <Video />
-     
+        <OrthographicCamera/>
+        <Physics
+            gravity={[0, -2, 0]} >
+            <Objet />
+            <Lights />
+            <Video />
+        </Physics>
+    
 
     </>
 
