@@ -59,6 +59,8 @@ export default function objet() {
     const raquette6 = useRef()
     const raquette7 = useRef()
     const backgroundPlane = useRef()
+    const cubesMesh = useRef()
+    const cubes = useRef()
 
     // Création d'une variable aléatoire avec une vitesse min de 0.2 avec une multiplication par -1 si inférieur à 0.5 pour faire une rotation inversée
     const [timeOffset] = useState(() => Math.random() * Math.PI * 2)
@@ -80,6 +82,7 @@ export default function objet() {
         raquette6.current.position.x += raquette6x
         raquette7.current.position.z += raquette7z
 
+
     })
 
     // Animation balles
@@ -90,9 +93,11 @@ export default function objet() {
     const [active2, setActive2] = useState(false)
     useCursor(active2)
 
+
+
     //Génération du background
     const cubesCount = 50
-    const cubes = useRef()
+
 
     const cubeTransforms = useMemo(() => {
         const positions = []
@@ -112,6 +117,19 @@ export default function objet() {
 
 
     const [backgroundFall, setbackgroundFall] = useState("kinematicPosition")
+
+    const colorChange = () =>
+    {
+        raquette1.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
+        raquette2.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
+        raquette3.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
+        raquette4.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
+        raquette5.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
+        raquette6.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
+        raquette7.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
+        cubesMesh.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
+    }
+
 
     //StartGame
 
@@ -161,7 +179,7 @@ export default function objet() {
         // .to(camera.position, { x: 3, y: 2, z: 5, duration: 3 }, 4)
 
     }
-
+   
 
     const leaveScene = () => {
         gsap.timeline({
@@ -496,7 +514,7 @@ export default function objet() {
             bevelSize={0.02}
             bevelOffset={0.0}
             bevelSegments={5}
-            onClick={() => { setlastState('tournament'); tournamentSelection() }}
+            onClick={() => { setlastState('tournament'); tournamentSelection(); colorChange() }}
 
             onPointerEnter={() => {
                 setEnableWireframe(false)
@@ -530,7 +548,7 @@ export default function objet() {
             bevelOffset={0.0}
             bevelSegments={5}
             maxWidth={2}
-            onClick={(() => { setlastState('simpleGame'); simpleGameSelection(); setbackgroundFall(null) })}
+            onClick={(() => { setlastState('simpleGame'); simpleGameSelection(); setbackgroundFall("");colorChange() })}
             onPointerEnter={() => {
                 setEnableWireframe(false)
                 document.body.style.cursor = `pointer`
@@ -668,11 +686,12 @@ export default function objet() {
             type={backgroundFall}
             positions={cubeTransforms.positions}
             rotations={cubeTransforms.rotations}
-            scales={cubeTransforms.scales}>
+            scales={cubeTransforms.scales}
+            >
 
             <instancedMesh args={[null, null, cubesCount]} castShadow receiveShadow>
                 <boxGeometry />
-                <meshStandardMaterial color="tomato" />
+                <meshStandardMaterial ref={cubesMesh} color="tomato" />
             </instancedMesh>
 
         </InstancedRigidBodies>
