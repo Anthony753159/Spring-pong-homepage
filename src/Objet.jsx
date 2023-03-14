@@ -118,8 +118,7 @@ export default function objet() {
 
     const [backgroundFall, setbackgroundFall] = useState("kinematicPosition")
 
-    const colorChange = () =>
-    {
+    const colorChange = () => {
         raquette1.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
         raquette2.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
         raquette3.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`)
@@ -169,17 +168,18 @@ export default function objet() {
             }
         })
             .to(camera.position, { x: 1, y: 1, z: 5, duration: 3 }, 0)
-            // .to(camera.rotation, {
-            //     duration: 2,
-            //     y: -1,
-            //     z: -1,
-            // }, 1)
+            .to(camera.rotation, {
+                duration: 2,
+                x: 0.3,
+                y: -0.5,
+                z: 0,
+            }, 1)
             .to(camera.position, { x: -4.2, y: -1.9, z: 5.0, duration: 2 }, 2)
         // .to(camera.position, { x: 1, y: 1, z: 5, duration: 3 }, 3)
         // .to(camera.position, { x: 3, y: 2, z: 5, duration: 3 }, 4)
 
     }
-   
+
 
     const leaveScene = () => {
         gsap.timeline({
@@ -191,6 +191,12 @@ export default function objet() {
             }
         })
             .to(camera.position, { x: 1, y: 1, z: 5, duration: 3 }, 0)
+            .to(camera.rotation, {
+                duration: 2,
+                x: 0,
+                y: 0,
+                z: 0,
+            }, 1)
             .to(camera.position, { x: 0.0, y: 0.3, z: 10.0, duration: 2 }, 2)
 
 
@@ -207,7 +213,13 @@ export default function objet() {
             }
         })
             .to(camera.position, { x: 1, y: 1, z: 5, duration: 3 }, 0)
-            .to(camera.position, { x: 5, y: 5, z: 6, duration: 2 }, 2)
+            .to(camera.rotation, {
+                duration: 2,
+                x: -0.7,
+                y: 0.5,
+                z: 0.0,
+            }, 1)
+            .to(camera.position, { x: 4.6, y: 5, z: 4.5, duration: 2 }, 2)
         // .to(camera.rotation, {
         //     duration: 2,
         //     y: Math.PI/2,
@@ -227,8 +239,22 @@ export default function objet() {
             }
         })
             .to(camera.position, { x: 1, y: 1, z: 5, duration: 3 }, 0)
-            .to(camera.position, { x: -3, y: 2, z: 5, duration: 2 }, 2)
+            .to(camera.rotation, {
+                duration: 2,
+                x: -0.4,
+                y: 0.2,
+                z: 0,
+            }, 1)
+            .to(camera.rotation, {
+                duration: 2,
+                x: 0.3,
+                y: -0.5,
+                z: 0,
+            }, 2)
+            .to(camera.position, { x: 1, y: 1, z: 5, duration: 3 }, 3)
 
+            .to(camera.position, { x: -4.2, y: -1.9, z: 5.0, duration: 2 }, 4)
+          
 
     }
 
@@ -548,7 +574,7 @@ export default function objet() {
             bevelOffset={0.0}
             bevelSegments={5}
             maxWidth={2}
-            onClick={(() => { setlastState('simpleGame'); simpleGameSelection(); setbackgroundFall("");colorChange() })}
+            onClick={(() => { setlastState('simpleGame'); simpleGameSelection(); setbackgroundFall(""); colorChange() })}
             onPointerEnter={() => {
                 setEnableWireframe(false)
                 document.body.style.cursor = `pointer`
@@ -666,7 +692,7 @@ export default function objet() {
             <Html>Go</Html>
         </mesh> */}
 
-        <mesh ref={backgroundPlane} position={[0, 0, 6]} rotation={[0, 0, 0]} scale={[8, 5, 0.2]}>
+        <mesh ref={backgroundPlane} position={[0, 0, 6]} rotation={[0, 0, 0]} scale={[8, 6, 0.2]}>
             <boxGeometry />
             <meshStandardMaterial color={[1, 1, 1]} toneMapped={false} />
         </mesh>
@@ -687,7 +713,7 @@ export default function objet() {
             positions={cubeTransforms.positions}
             rotations={cubeTransforms.rotations}
             scales={cubeTransforms.scales}
-            >
+        >
 
             <instancedMesh args={[null, null, cubesCount]} castShadow receiveShadow>
                 <boxGeometry />
