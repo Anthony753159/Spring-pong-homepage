@@ -246,14 +246,14 @@ export default function objet() {
                 z: 0,
             }, 1)
             .to(camera.rotation, {
-                duration: 2,
+                duration: 3,
                 x: 0.3,
                 y: -0.5,
                 z: 0,
             }, 2)
-            .to(camera.position, { x: 1, y: 1, z: 5, duration: 3 }, 3)
+            .to(camera.position, { x: 1, y: 1, z: 5, duration: 3 }, 2)
 
-            .to(camera.position, { x: -4.2, y: -1.9, z: 5.0, duration: 2 }, 4)
+            .to(camera.position, { x: -4.2, y: -1.9, z: 5.0, duration: 3 }, 3)
           
 
     }
