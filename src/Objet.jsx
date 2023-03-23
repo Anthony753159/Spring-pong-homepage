@@ -23,7 +23,7 @@ const raquette3Mesh = new THREE.MeshStandardMaterial({ color: 'yellow' })
 const raquette4Mesh = new THREE.MeshStandardMaterial({ color: 'blue' })
 const raquette5Mesh = new THREE.MeshStandardMaterial({ color: 'gold' })
 const raquette6Mesh = new THREE.MeshStandardMaterial({ color: 'orange' })
-const raquette7Mesh = new THREE.MeshStandardMaterial({ color: 'lightorange' })
+const raquette7Mesh = new THREE.MeshStandardMaterial({ color: 'brown' })
 const pongMesh = new THREE.MeshBasicMaterial({ color: 'orange' })
 const goMesh = new THREE.MeshBasicMaterial({ color: 'lightblue' })
 
@@ -139,7 +139,8 @@ export default function objet() {
         console.log(lastState)
 
         if (lastState == 'simpleGame') {
-            window.location.assign('http://127.0.0.1:8080/spring-pong/game')
+            window.location.assign('http://localhost:5173/pongPage.html')
+            // window.location.assign('http://127.0.0.1:8080/spring-pong/game')
         }
         else if (lastState == 'tournament') {
             window.location.assign('http://127.0.0.1:8080/spring-pong/tournament')
@@ -271,7 +272,7 @@ export default function objet() {
     // const handleMouseEnter = () => {
 
     //      if (music == false) {
-    //          audio.play()
+    //          audioTournament.play()
     //          setMusic(true)
     //          console.log(audio)
 
@@ -281,7 +282,7 @@ export default function objet() {
     //  const handleMouseLeave = () => {
 
     // if (music == true) {
-    //     audio.pause();
+    //     audioTournament.pause();
     //     setMusic(false);
     //     console.log(audio)
 

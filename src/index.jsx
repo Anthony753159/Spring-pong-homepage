@@ -6,6 +6,7 @@ import { Perf } from 'r3f-perf'
 import { Environment } from '@react-three/drei'
 import { RotationOps } from '@dimforge/rapier3d-compat'
 
+
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
@@ -18,8 +19,6 @@ root.render(
         position: [ -0.0, 0.3 , 10.0 ]
        
     } }
-   
-
   >
  
         {/* <Perf/> */}
@@ -30,6 +29,7 @@ root.render(
             far: 2,
             position: [ 8, 4, 10 ]
         } }/>
+        
     </Canvas>
        
   
