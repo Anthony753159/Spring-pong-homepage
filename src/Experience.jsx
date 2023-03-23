@@ -20,7 +20,7 @@ export default function Experience() {
     return <>
 
         <Effects />
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         {/* <OrthographicCamera/> */}
         <Physics
             gravity={[0, -2, 0]} >
