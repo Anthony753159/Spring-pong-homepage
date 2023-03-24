@@ -139,7 +139,7 @@ export default function objet() {
         console.log(lastState)
 
         if (lastState == 'simpleGame') {
-            window.location.assign('http://localhost:5173/pongPage.html')
+            window.location.assign('./pongPage.html')
             // window.location.assign('http://127.0.0.1:8080/spring-pong/game')
         }
         else if (lastState == 'tournament') {
